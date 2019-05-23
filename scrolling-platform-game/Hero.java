@@ -15,16 +15,16 @@ public class Hero extends Actor
      * These are available for use in any method below.
      */    
     // Horizontal speed (change in horizontal position, or delta X)
-    private int deltaX = 4;
+    private int deltaX = 6;
 
     // Vertical speed (change in vertical position, or delta Y)
     private int deltaY = 4;
 
     // Acceleration for falls
-    private int acceleration = 2;
+    private int acceleration = 1;
 
     // Strength of a jump
-    private int jumpStrength = -24;
+    private int jumpStrength = -5;
 
     // Track current theoretical position in wider "scrollable" world
     private int currentScrollableWorldXPosition;
@@ -69,7 +69,7 @@ public class Hero extends Actor
         horizontalDirection = FACING_RIGHT;
 
         // Set image
-        setImage("hero-jump-down-right.png");
+        //setImage("hero-jump-down-right.png");
 
         // Initialize the 'walking' arrays
         walkingRightImages = new GreenfootImage[COUNT_OF_WALKING_IMAGES];
@@ -108,31 +108,14 @@ public class Hero extends Actor
      */
     private void checkKeys()
     {
-        // Walking keys
-        if (Greenfoot.isKeyDown("left") && !isGameOver)
+         // Jumping
+        if (Greenfoot.isKeyDown("right") && !isGameOver)
         {
-            moveLeft();
-        }
-        else if (Greenfoot.isKeyDown("right") && !isGameOver)
-        {
-            moveRight();
-        }
-        else
-        {
-            // Standing still; reset walking animation
-            walkingFrames = 0;
-        }
-
-        // Jumping
-        if (Greenfoot.isKeyDown("space") && !isGameOver)
-        {
-            // Only able to jump when on a solid object
-            if (onPlatform())
-            {
-                jump();
-            }
+              jump();
+              moveRight();
         }
     }
+        
 
     /**
      * Should the hero be falling right now?
@@ -147,11 +130,11 @@ public class Hero extends Actor
             // Set image
             if (horizontalDirection == FACING_RIGHT && Greenfoot.isKeyDown("right") == false)
             {
-                setImage("hero-right.png");
+                //setImage("hero-right.png");
             }
             else if (horizontalDirection == FACING_LEFT && Greenfoot.isKeyDown("left") == false)
             {
-                setImage("hero-left.png");
+                //setImage("hero-left.png");
             }
 
             // Get a reference to any object that's created from a subclass of Platform,
@@ -215,11 +198,11 @@ public class Hero extends Actor
         // Set image
         if (horizontalDirection == FACING_RIGHT)
         {
-            setImage("hero-jump-up-right.png");
+            //setImage("hero-jump-up-right.png");
         }
         else
         {
-            setImage("hero-jump-up-left.png");
+            //setImage("hero-jump-up-left.png");
         }
 
         // Change the vertical speed to the power of the jump
@@ -242,11 +225,11 @@ public class Hero extends Actor
             // Set image
             if (horizontalDirection == FACING_RIGHT)
             {
-                setImage("hero-jump-down-right.png");
+                //setImage("hero-jump-down-right.png");
             }
             else
             {
-                setImage("hero-jump-down-left.png");
+                //setImage("hero-jump-down-left.png");
             }
         }
 
@@ -275,11 +258,11 @@ public class Hero extends Actor
             // Set image for this stage of the animation
             if (direction == FACING_RIGHT)
             {
-                setImage(walkingRightImages[stage]);
+                //setImage(walkingRightImages[stage]);
             }
             else
             {
-                setImage(walkingLeftImages[stage]);
+                //setImage(walkingLeftImages[stage]);
             }
         }
         else
@@ -307,11 +290,11 @@ public class Hero extends Actor
             // Set appropriate jumping image
             if (verticalDirection == JUMPING_UP)
             {
-                setImage("hero-jump-up-right.png");
+                //setImage("hero-jump-up-right.png");
             }
             else
             {
-                setImage("hero-jump-down-right.png");
+                //setImage("hero-jump-down-right.png");
             }
         }
 
@@ -503,10 +486,12 @@ public class Hero extends Actor
         } 
 
     }
+    
+   
 
     /**
      * When the hero falls off the bottom of the screen,
-     * game is over. We must remove them.
+     * game is over. We must remove them. Also, when hero touches the pilots
      */
     public void checkGameOver()
     {
@@ -515,17 +500,22 @@ public class Hero extends Actor
 
         // Vertical position where hero no longer visible
         int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
-
+        
+        //When touches the MetalPlate
+        if(isTouching(MetalPlate.class))
+        {
+            removeTouching(Hero.class);
+        }
         // Off bottom of screen?
         if (this.getY() > offScreenVerticalPosition)
         {
             // Remove the hero
-            isGameOver = true;
+            //isGameOver = true;
             world.setGameOver();
             world.removeObject(this);
 
             // Tell the user game is over
-            world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
+            //world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
     }
 }
