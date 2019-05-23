@@ -38,6 +38,8 @@ public class SideScrollingWorld extends World
 
     // Track whether game is on
     private boolean isGameOver;
+    
+    private GreenfootSound backgroundSound;
 
     /**
      * Constructor for objects of class SideScrollingWorld.
@@ -54,6 +56,10 @@ public class SideScrollingWorld extends World
 
         // Game on
         isGameOver = false;
+        
+        backgroundSound = new GreenfootSound("");
+        backgroundSound.play();
+        
     }
 
     /**
