@@ -48,6 +48,10 @@ public class Hero extends Actor
     private static final int WALK_ANIMATION_DELAY = 8;
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
+    
+    // Sound effects
+    private GreenfootSound jumpSound;
+    private GreenfootSound levelCompleteSound;
 
     /**
      * Constructor
@@ -87,6 +91,10 @@ public class Hero extends Actor
 
         // Track animation frames for walking
         walkingFrames = 0;
+        
+        // Load all the sound effects
+        jumpSound = new GreenfootSound("sfx_wing.wav");
+        levelCompleteSound = new GreenfootSound("sfx_point.wav");
     }
 
     /**
@@ -113,7 +121,9 @@ public class Hero extends Actor
         {
               jump();
               moveRight();
+              
         }
+        
     }
         
 
@@ -192,6 +202,9 @@ public class Hero extends Actor
      */
     public void jump()
     {
+        // Play sound effect
+        jumpSound.play();
+        
         // Track vertical direction
         verticalDirection = JUMPING_UP;
 
@@ -336,6 +349,9 @@ public class Hero extends Actor
 
                 // Tell the user game is over
                 world.showText("LEVEL COMPLETE", world.getWidth() / 2, world.getHeight() / 2);
+                
+                //Play level complete sound effect
+                levelCompleteSound.play();
             }
 
         }
