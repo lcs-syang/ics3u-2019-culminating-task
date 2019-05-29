@@ -125,7 +125,7 @@ public class Hero extends Actor
         {
             jump();
             moveRight();
-            fall();
+            
         }
 
     }
@@ -535,7 +535,8 @@ public class Hero extends Actor
             Greenfoot.stop();
         }
         // Off bottom of screen?
-        if (this.getY() > offScreenVerticalPosition)
+        if (this.getY() > offScreenVerticalPosition
+            || this.getY() < 0)
         {
             // Remove the hero
             //isGameOver = true;
@@ -546,18 +547,7 @@ public class Hero extends Actor
             // Tell the user game is over
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
-        //When the ball go all the way up to the top
-        //if(this.getY() < outOfBouncePosition)
-        //{
-        //Remove the Hero
-        //isGameOver = true
-        //world.setGameOver();
-        //world.removeObject(this);
-        //play game over sound effect
-        //gameOverSound.play();
-        //Tell the user game is over
-        //world.showText("GAME OVER", world.getWidth()/2,  world.getHeight() / 2);
-        //}
+        
     }
 
     public void encounterEnemy()
