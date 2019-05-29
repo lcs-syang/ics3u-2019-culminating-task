@@ -106,6 +106,7 @@ public class Hero extends Actor
      */
     public void act() 
     {
+        addScore();
         checkKeys();
         checkFall();
         encounterEnemy();
@@ -113,6 +114,21 @@ public class Hero extends Actor
         {
             checkGameOver();
         }
+    }
+    
+    
+    
+    public void addScore()
+    {
+        if (isTouching(Coin.class))
+        {
+            removeTouching(Coin.class);
+            SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
+            sidescrollingworld.addScore();
+            sidescrollingworld.showScore();
+
+        }    
+
     }
 
     /**

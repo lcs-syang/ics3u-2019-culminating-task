@@ -68,12 +68,15 @@ public class SideScrollingWorld extends World
         frames = 0;
         time = 0;
         showTime();
+        showScore();
     }
-
+    
     private void showTime()
     {
         showText("Time:" + time, 100, 50);
     }
+    
+    
 
     public void trackTime()
     {
@@ -87,7 +90,18 @@ public class SideScrollingWorld extends World
             showTime();
         }
     }
+    
+    public void addScore()
+     {
+        //
+        score += 1;
+    }
 
+    public void showScore()
+    {
+        //Show score at the top right corner of the world
+        showText("Score:" + score,550,50);
+    }
     /**
      * Set up the entire world.
      */
@@ -457,6 +471,8 @@ public class SideScrollingWorld extends World
     public void act()
     {
         trackTime();
+        showScore();
+        addCoin();
     }
 
     /**
@@ -486,6 +502,14 @@ public class SideScrollingWorld extends World
         Enemy enemy = new Enemy(130, 100);
         addObject(enemy, 130, 100);
     }
+    
+    private void addCoin()
+    //
+    {
+       Coin coin = new Coin(120,100);
+       addObject(coin, 120, 100); 
+    }
+    
 
     /**
      * Return an object reference to the hero.
