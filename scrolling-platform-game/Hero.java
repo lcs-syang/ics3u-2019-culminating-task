@@ -48,7 +48,7 @@ public class Hero extends Actor
     private static final int WALK_ANIMATION_DELAY = 8;
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
-    
+
     // Sound effects
     private GreenfootSound jumpSound;
     private GreenfootSound levelCompleteSound;
@@ -92,7 +92,7 @@ public class Hero extends Actor
 
         // Track animation frames for walking
         walkingFrames = 0;
-        
+
         // Load all the sound effects
         jumpSound = new GreenfootSound("sfx_wing.wav");
         levelCompleteSound = new GreenfootSound("sfx_point.wav");
@@ -108,6 +108,7 @@ public class Hero extends Actor
     {
         checkKeys();
         checkFall();
+        encounterEnemy();
         if (!isGameOver)
         {
             checkGameOver();
@@ -119,16 +120,15 @@ public class Hero extends Actor
      */
     private void checkKeys()
     {
-         // Jumping
+        // Jumping
         if (Greenfoot.isKeyDown("right") && !isGameOver)
         {
-              jump();
-              moveRight();
-              
+            jump();
+            moveRight();
+            fall();
         }
-        
+
     }
-        
 
     /**
      * Should the hero be falling right now?
@@ -207,7 +207,7 @@ public class Hero extends Actor
     {
         // Play sound effect
         jumpSound.play();
-        
+
         // Track vertical direction
         verticalDirection = JUMPING_UP;
 
@@ -352,7 +352,7 @@ public class Hero extends Actor
 
                 // Tell the user game is over
                 world.showText("LEVEL COMPLETE", world.getWidth() / 2, world.getHeight() / 2);
-                
+
                 //Play level complete sound effect
                 levelCompleteSound.play();
             }
@@ -505,8 +505,6 @@ public class Hero extends Actor
         } 
 
     }
-    
-   
 
     /**
      * When the hero falls off the bottom of the screen,
@@ -514,15 +512,15 @@ public class Hero extends Actor
      */
     public void checkGameOver()
     {
-        
+
         // Get object reference to world
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
 
         // Vertical position where hero no longer visible
         int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
-        
+
         //int outOfBouncePosition = (world.getHeight() + this.getImage().getHeight() / -2);
-        
+
         //When touches the MetalPlate
         if(isTouching(MetalPlate.class))
         {
@@ -551,15 +549,27 @@ public class Hero extends Actor
         //When the ball go all the way up to the top
         //if(this.getY() < outOfBouncePosition)
         //{
-            //Remove the Hero
-            //isGameOver = true
-            //world.setGameOver();
-            //world.removeObject(this);
-            //play game over sound effect
-            //gameOverSound.play();
-            //Tell the user game is over
-            //world.showText("GAME OVER", world.getWidth()/2,  world.getHeight() / 2);
+        //Remove the Hero
+        //isGameOver = true
+        //world.setGameOver();
+        //world.removeObject(this);
+        //play game over sound effect
+        //gameOverSound.play();
+        //Tell the user game is over
+        //world.showText("GAME OVER", world.getWidth()/2,  world.getHeight() / 2);
         //}
     }
-    
+
+    public void encounterEnemy()
+    {
+        if (isTouching(Enemy.class))
+        {
+            //End the game when the hero touches the Crab
+            SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
+            sidescrollingworld.setGameOver();
+            isGameOver = true;
+            sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
+            Greenfoot.stop();
+        }    
+    }
 }

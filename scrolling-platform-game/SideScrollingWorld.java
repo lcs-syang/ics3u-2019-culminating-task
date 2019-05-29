@@ -23,11 +23,11 @@ public class SideScrollingWorld extends World
     //              Should be a resolution that's a multiple of TILE_SIZE
     private static final int VISIBLE_WIDTH = 640;
     private static final int VISIBLE_HEIGHT = 480;
-    
+
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-    
+
     // Defining the boundaries of the scrollable world
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
@@ -38,7 +38,7 @@ public class SideScrollingWorld extends World
 
     // Track whether game is on
     private boolean isGameOver;
-    
+
     private GreenfootSound backgroundSound;
 
     /**
@@ -56,11 +56,8 @@ public class SideScrollingWorld extends World
 
         // Game on
         isGameOver = false;
-        
-        
-        
-    }
 
+    }
     /**
      * Set up the entire world.
      */
@@ -71,317 +68,316 @@ public class SideScrollingWorld extends World
         //addFences();
         //addMetalPlateSteps();
         addClouds();
+        addEnemy();
         //addRightGround();
-        
         // add a metal plate
         for(int i=0; i<=3; i+=1)
         {
             //location
             int x = 10 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=3; i+=1)
         {
             //location
             int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=4; i+=1)
         {
             //location
             int x = 10 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
-         // add a metal plate
+
+        // add a metal plate
         for(int i=0; i<=4; i+=1)
         {
             //location
             int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
-         // add a metal plate
+
+        // add a metal plate
         for(int i=0; i<=1; i+=1)
         {
             //location
             int x = 17 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=1; i+=1)
         {
             //location
             int x = 18 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=7; i+=1)
         {
             //location
             int x = 17 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 7 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
-        
+
         // add a metal plate
         for(int i=0; i<=7; i+=1)
         {
             //location
             int x = 18 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 7 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=3; i+=1)
         {
             //location
             int x = 24 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=3; i+=1)
         {
             //location
             int x = 25 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=5; i+=1)
         {
             //location
             int x = 24 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=5; i+=1)
         {
             //location
             int x = 25 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=6; i+=1)
         {
             //location
             int x = 31 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         }
-        
+
         // add a metal plate
         for(int i=0; i<=6; i+=1)
         {
             //location
             int x = 32 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         }
-        
+
         // add a metal plate
         for(int i=0; i<=1; i+=1)
         {
             //location
             int x = 31 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 13 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=1; i+=1)
         {
             //location
             int x = 32 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 13 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=1; i+=1)
         {
             //location
             int x = 42 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=1; i+=1)
         {
             //location
             int x = 43 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=6; i+=1)
         {
             //location
             int x = 42 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 8 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=6; i+=1)
         {
             //location
             int x = 43 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 8 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=4; i+=1)
         {
             //location
             int x = 47 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=4; i+=1)
         {
             //location
             int x = 48 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=5; i+=1)
         {
             //location
             int x = 47 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=5; i+=1)
         {
             //location
             int x = 48 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=2; i+=1)
         {
             //location
             int x = 52 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=2; i+=1)
         {
             //location
             int x = 53 * TILE_SIZE + HALF_TILE_SIZE;
             int y = HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=6; i+=1)
         {
             //location
             int x = 52 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 8 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         // add a metal plate
         for(int i=0; i<=6; i+=1)
         {
             //location
             int x = 53 * TILE_SIZE + HALF_TILE_SIZE;
             int y = 8 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            
+
             MetalPlate plate = new MetalPlate(x,y);
             addObject(plate, x, y);
         } 
-        
+
         addHero();
     }
 
@@ -543,6 +539,12 @@ public class SideScrollingWorld extends World
         }
     }
 
+    private void addEnemy()
+    {
+        Enemy enemy = new Enemy(1200, 100);
+        addObject(enemy, 1200, 100);
+    }
+
     /**
      * Return an object reference to the hero.
      */
@@ -558,6 +560,6 @@ public class SideScrollingWorld extends World
     {
         isGameOver = true;
     }
-    
+
 }
 
