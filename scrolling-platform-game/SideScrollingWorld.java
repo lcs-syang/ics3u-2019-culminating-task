@@ -39,7 +39,11 @@ public class SideScrollingWorld extends World
     // Track whether game is on
     private boolean isGameOver;
 
-    private GreenfootSound backgroundSound;
+    //Set timer and score
+    private boolean gameOn;
+    private int frames;
+    private int time = 0;
+    public int score = 0;
 
     /**
      * Constructor for objects of class SideScrollingWorld.
@@ -58,6 +62,32 @@ public class SideScrollingWorld extends World
         isGameOver = false;
 
     }
+
+    private void startGame()
+    {
+        frames = 0;
+        time = 0;
+        showTime();
+    }
+
+    private void showTime()
+    {
+        showText("Time:" + time, 100, 50);
+    }
+
+    public void trackTime()
+    {
+        // Track frames (fps is about 60)
+        frames += 1;
+
+        // Every second (roughly) reduce the time left
+        if (frames % 60 == 0)
+        {
+            time += 1;
+            showTime();
+        }
+    }
+
     /**
      * Set up the entire world.
      */
@@ -381,8 +411,6 @@ public class SideScrollingWorld extends World
         addHero();
     }
 
-    
-    
     /**
      * Add steps made out of metal plates leading to end of world.
      */
@@ -428,6 +456,7 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
+        trackTime();
     }
 
     /**
@@ -445,11 +474,17 @@ public class SideScrollingWorld extends World
         addObject(theHero, initialX, 8 * TILE_SIZE);
     }
 
-    
     private void addEnemy()
+    //New Enemy
     {
         Enemy enemy = new Enemy(1200, 100);
         addObject(enemy, 1200, 100);
+    }
+
+    //New Enemy
+    {
+        Enemy enemy = new Enemy(130, 100);
+        addObject(enemy, 130, 100);
     }
 
     /**
