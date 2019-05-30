@@ -122,11 +122,14 @@ public class Hero extends Actor
     {
         if (isTouching(Coin.class))
         {
+            //Make the coin dispear once the hero touches it
             removeTouching(Coin.class);
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
+            //Get a point when touch the coi 
             sidescrollingworld.addScore();
             sidescrollingworld.showScore();
-
+            //Play the sound of point
+            levelCompleteSound.play();
         }    
 
     }

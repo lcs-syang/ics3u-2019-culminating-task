@@ -93,13 +93,13 @@ public class SideScrollingWorld extends World
     
     public void addScore()
      {
-        //
+        //Add 1 point each time
         score += 1;
     }
 
     public void showScore()
     {
-        //Show score at the top right corner of the world
+        //Show score on the world
         showText("Score:" + score,550,50);
     }
     /**
@@ -113,6 +113,7 @@ public class SideScrollingWorld extends World
         //addMetalPlateSteps();
         addClouds();
         addEnemy();
+        addCoin();
         //addRightGround();
         // add a metal plate
         for(int i=0; i<=3; i+=1)
@@ -472,7 +473,7 @@ public class SideScrollingWorld extends World
     {
         trackTime();
         showScore();
-        addCoin();
+        
     }
 
     /**
@@ -504,11 +505,42 @@ public class SideScrollingWorld extends World
     }
     
     private void addCoin()
-    //
-    {
-       Coin coin = new Coin(120,100);
-       addObject(coin, 120, 100); 
+    //new coin
+    {    
+       Coin coin = new Coin(200,250);
+       addObject(coin, 200, 250); 
     }
+    
+    //new coin
+    {
+        Coin coin = new Coin(345, 230);
+        addObject(coin, 345, 230);
+    }
+    
+    //new coin
+    {
+        Coin coin = new Coin(450, 340);
+        addObject(coin, 450, 340);
+    }
+    
+    //new coin
+    {
+        Coin coin = new Coin(800, 200);
+        addObject(coin, 800, 200);
+    }
+    
+    //new coin
+    {
+        Coin coin = new Coin(1200, 300);
+        addObject(coin, 1200, 300);
+    }
+    
+    //new coin
+    {
+        Coin coin = new Coin(1450, 300);
+        addObject(coin, 1450, 300);
+    }
+    
     
 
     /**
